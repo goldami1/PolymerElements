@@ -1,2 +1,6 @@
-.git
-.metadata
+.git/
+.metadata/
+.settings/
+target/
+node_modules/
+**/package-lock.json*
