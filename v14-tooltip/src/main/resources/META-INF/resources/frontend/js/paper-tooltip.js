@@ -1,7 +1,7 @@
 import {PolymerElement, html} from '@polymer/polymer';
 import '@polymer/paper-tooltip/paper-tooltip.js';
 
-window.tooltips = {
+window.papertooltips = {
 		setFontSize: function(classname, fontSize)
 		{
 			var newClassname = '.' + classname;
@@ -16,7 +16,7 @@ window.tooltips = {
 			domRes = domRes.replace(tooltipBlockRes, tooltipBlockRes.replace(fontSizeLineRes, "font-size: " + fontSize));
 			document.querySelectorAll(newClassname)[0].shadowRoot.innerHTML = domRes;
 			
-			window.tooltips.enableTooltip(newClassname);
+			window.papertooltips.enableTooltip(newClassname);
 		},
 		
 		disableTooltip: function(classname) {

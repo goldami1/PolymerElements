@@ -21,6 +21,7 @@ public class TooltipComponent extends Composite<Div> implements HasTooltip
 	public TooltipComponent()
 	{
 		this.layout = getContent();
+		this.layout.setWidthFull();
 		tooltip = new PaperTooltip();
 		this.addDetachListener(e -> disableTooltip());
 	}

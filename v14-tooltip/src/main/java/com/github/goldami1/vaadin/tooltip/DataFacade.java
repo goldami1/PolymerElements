@@ -17,8 +17,8 @@ public class DataFacade
 { 
 	private UI ui;
 	private enum JS_METHODS{
-		setFontSize("window.tooltips.setFontSize($0,$1)"),
-		disableTooltip("window.tooltips.disableTooltip($0)");
+		setFontSize("window.papertooltips.setFontSize($0,$1)"),
+		disableTooltip("window.papertooltips.disableTooltip($0)");
 		
 		String jsMethod;
 		
