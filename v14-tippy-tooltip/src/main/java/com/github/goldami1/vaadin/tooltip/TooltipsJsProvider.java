@@ -13,11 +13,13 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  files to './src/main/resources/META-INF/resources/frontend' and insert an
  annotation @JsModule("./my-module.js") here.
 */
-public class TippyTooltip extends Component
+public class TooltipsJsProvider extends Component
 {
 	private static final long serialVersionUID = 3244552910381525105L;
 
-	public TippyTooltip() {
+	public TooltipsJsProvider()
+	{
+		
     }
 
 }

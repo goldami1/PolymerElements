@@ -9,17 +9,20 @@ import lombok.Getter;
 import lombok.NonNull;
 
 @Tag("paper-tooltip")
-@JsModule("@polymer/paper-tooltip/paper-tooltip.js")
+@JsModule("./js/paper-tooltip.js")
 @NpmPackage(value = "@polymer/paper-tooltip", version = "^3.0.1")
 public class PaperTooltip extends Component
 {
 	private static final long serialVersionUID = 6431493404762755091L;
-	@NonNull
-	@Getter
-	private StateData tooltipState;
+	@NonNull @Getter
+	private DataFacade tooltipFacade;
 	
 	public PaperTooltip()
 	{
-		tooltipState = StateData.builder().element(getElement()).build();
+		tooltipFacade = DataFacade.builder()
+									.tooltipState(StateData.builder()
+															.domElement(getElement())
+															.build())
+									.build();
     }
 }
