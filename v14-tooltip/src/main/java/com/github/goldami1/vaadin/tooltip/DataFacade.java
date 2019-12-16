@@ -110,6 +110,11 @@ public class DataFacade
 		return this;
 	}
 	
+	public boolean isEnabled()
+	{
+		return Optional.ofNullable(getDomElement().getParent()).isPresent();
+	}
+	
 	public static CustomBuilder builder()
 	{
 		return new CustomBuilder();
