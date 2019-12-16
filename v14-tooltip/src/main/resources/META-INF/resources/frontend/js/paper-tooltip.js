@@ -15,6 +15,7 @@ window.papertooltips = {
 
 			domRes = domRes.replace(tooltipBlockRes, tooltipBlockRes.replace(fontSizeLineRes, "font-size: " + fontSize));
 			document.querySelectorAll(newClassname)[0].shadowRoot.innerHTML = domRes;
+			document.querySelectorAll(newClassname)[0].style.position = "fixed";
 			
 			window.papertooltips.enableTooltip(newClassname);
 		},
