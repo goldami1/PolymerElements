@@ -17,6 +17,7 @@ public class DataFacade
 { 
 	private UI ui;
 	private enum JS_METHODS{
+		enableAndUpdateTooltip("window.papertooltips.enableAndUpdateTooltip($0)"),
 		setFontSize("window.papertooltips.setFontSize($0,$1)"),
 		disableTooltip("window.papertooltips.disableTooltip($0)");
 		
@@ -66,6 +67,12 @@ public class DataFacade
 		setSimpleText(text);
 		ui.access(() -> ui.getPage().executeJs(JS_METHODS.setFontSize.toString(), uuid, fontSize));
 		tooltipState.setFontSize(fontSize);
+	}
+	
+	public DataFacade setFixedPosition()
+	{
+		ui.access(() -> ui.getPage().executeJs(JS_METHODS.enableAndUpdateTooltip.toString(), uuid));
+		return this;
 	}
 	
 	public void setSimpleText(@NonNull String text)
@@ -125,8 +132,6 @@ public class DataFacade
 		setId(uuid);
 		ui = UI.getCurrent();
 		getDomElement().getClassList().add(uuid);
-		disableAnimationDelay();
-		disableAnimation();
 		
 		return this;
 	}

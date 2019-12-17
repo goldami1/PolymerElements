@@ -1,7 +1,6 @@
 package com.github.goldami1.vaadin.tooltip.component;
 
 import com.github.goldami1.vaadin.tooltip.HasTooltip;
-import com.github.goldami1.vaadin.tooltip.POSITION;
 import com.github.goldami1.vaadin.tooltip.PaperTooltip;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
@@ -37,7 +36,6 @@ public class TooltipComponent extends Composite<Div> implements HasTooltip
 			throw new IllegalArgumentException("Illegal font size");
 		
 		TooltipComponent res = setDescription(component, description, false);
-		
 		res.getTooltip().getTooltipFacade().setSimpleText(description, fontSizeInPixels+"px");
 		
 		return res;
@@ -48,9 +46,9 @@ public class TooltipComponent extends Composite<Div> implements HasTooltip
 		TooltipComponent tooltipComponent = new TooltipComponent();
 		tooltipComponent.add(component);
         tooltipComponent.getTooltip().getTooltipFacade()
+        				.setFixedPosition()
         				.disableAnimation()
-        				.disableAnimationDelay()
-        				.setPosition(POSITION.RIGHT);
+        				.disableAnimationDelay();
         
         if(isHTML)
         	tooltipComponent.getTooltip().getTooltipFacade()

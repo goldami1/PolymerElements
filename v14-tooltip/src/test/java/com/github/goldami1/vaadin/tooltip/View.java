@@ -13,11 +13,14 @@ public class View extends VerticalLayout
 	
 	public View()
 	{
+		this.getElement().getStyle().set("margin-left", "50px");
+		this.getElement().getStyle().set("margin-top", "50px");
 		this.setSizeFull();
 		
 		for(int i=0; i<10; i++)
 		{
-			TooltipComponent tc = TooltipComponent.setDescription(new Label(labelPrefix+i), "Hello World - tooltip", 30);
+			TooltipComponent tc = TooltipComponent.setDescription(new Label(labelPrefix+i), "Hello World - tooltip", false);
+			tc.getTooltip().getTooltipFacade().setPosition(POSITION.RIGHT);
 			
 			tc.addClickListener(e ->
 			{

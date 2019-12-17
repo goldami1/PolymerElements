@@ -14,10 +14,27 @@ window.papertooltips = {
 			var fontSizeLineRes = tooltipBlockRes.match(fontSizeLineRegex)[0];
 
 			domRes = domRes.replace(tooltipBlockRes, tooltipBlockRes.replace(fontSizeLineRes, "font-size: " + fontSize));
-			document.querySelectorAll(newClassname)[0].shadowRoot.innerHTML = domRes;
-			document.querySelectorAll(newClassname)[0].style.position = "fixed";
+			current.shadowRoot.innerHTML = domRes;
 			
-			window.papertooltips.enableTooltip(newClassname);
+			window.papertooltips._enableAndUpdateTooltip(newClassname);
+		},
+		
+		_updatePositionAndXY: function(classname)
+		{
+			var currentElem = document.querySelectorAll(classname)[0];
+			
+			currentElem.fitToVisibleBounds = true;
+			currentElem.updatePosition();
+			currentElem.style.top = currentElem._target.getBoundingClientRect().top + (currentElem._target.offsetHeight - currentElem.offsetHeight) / 2 + 'px';
+			switch (currentElem.position) {
+				case 'top':
+					currentElem.style.top = currentElem.getBoundingClientRect().top - currentElem.offsetHeight + 'px'; 
+					break;
+				case 'bottom':
+					currentElem.style.top = currentElem.getBoundingClientRect().top + currentElem.offsetHeight + 'px';
+					break;
+			}
+			currentElem.style.position = "fixed";
 		},
 		
 		disableTooltip: function(classname) {
@@ -26,19 +43,25 @@ window.papertooltips = {
 			element.removeEventListener('mouseleave', _foo2);
 		},
 		
-		enableTooltip: function(classname)
+		enableAndUpdateTooltip: function(classname)
+		{
+			var newClassname = '.' + classname;
+			
+			window.papertooltips._enableAndUpdateTooltip(newClassname);
+		},
+		
+		_enableAndUpdateTooltip: function(classname)
 		{
 			var currentElem = document.querySelectorAll(classname)[0];
 			
 			currentElem.target.addEventListener('mouseenter', function _foo1()
 			{
 				currentElem.shadowRoot.lastElementChild.classList.remove('hidden');
-				currentElem.updatePosition();
+				window.papertooltips._updatePositionAndXY(classname);
 			});
 			currentElem.target.addEventListener('mouseleave', function _foo2()
 			{
 				currentElem.shadowRoot.lastElementChild.classList.add('hidden');
-				currentElem.updatePosition();
 			}); 
 		}
 }

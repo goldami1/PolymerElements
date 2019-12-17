@@ -6,7 +6,7 @@
 
 	<groupId>com.github.goldami1.vaadin.tooltip</groupId>
 	<artifactId>v14-tooltip</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<name>v14-tooltip</name>
 	<description>Integration of paper-tooltip for Vaadin platform</description>
 
