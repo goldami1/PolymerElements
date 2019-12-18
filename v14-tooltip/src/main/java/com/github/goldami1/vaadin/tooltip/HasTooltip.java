@@ -6,12 +6,18 @@ public interface HasTooltip extends HasElement
 {
 	default void disableTooltip()
 	{
-		getTooltip().getTooltipFacade().removeTooltip();
+		if(isEnabled())
+			getTooltip().getTooltipFacade().removeTooltip();
 	}
 	
 	default void enableTooltip()
 	{
 		getTooltip().getTooltipFacade().addTooltip();
+	}
+	
+	default boolean isEnabled()
+	{
+		return getTooltip().getTooltipFacade().isEnabled();
 	}
 	
 	PaperTooltip getTooltip();
