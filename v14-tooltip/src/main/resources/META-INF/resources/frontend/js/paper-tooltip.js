@@ -23,6 +23,9 @@ window.papertooltips = {
 		{
 			var currentElem = document.querySelectorAll(classname)[0];
 			
+			if(!currentElem)
+				return;
+			
 			currentElem.fitToVisibleBounds = true;
 			currentElem.updatePosition();
 			currentElem.style.top = currentElem._target.getBoundingClientRect().top + (currentElem._target.offsetHeight - currentElem.offsetHeight) / 2 + 'px';
