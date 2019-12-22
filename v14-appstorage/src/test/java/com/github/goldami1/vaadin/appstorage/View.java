@@ -1,5 +1,6 @@
 package com.github.goldami1.vaadin.appstorage;
 
+import com.github.goldami1.vaadin.appstorage.jsprovider.AppStorageLocalStorageDocumentJsProvider;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,7 +19,7 @@ public class View extends VerticalLayout
     {
 		initView();
 		
-//		AppStorageLocalStorageDocumentJsProvider appStorage = new AppStorageLocalStorageDocumentJsProvider();
+		AppStorageLocalStorageDocumentJsProvider appStorage = new AppStorageLocalStorageDocumentJsProvider();
     }
 
 	private void initView()
